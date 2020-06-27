@@ -7,18 +7,21 @@ export function getUsers(success) {
     },
   }).then(checkStatus)
     .then(parseJSON)
-    .then(success);
+    .then(success)
+    .catch(() => {
+      console.log('error')
+    })
 }
 
-export function getUser(user_login) {
-  return fetch(API + '/users/' + user_login, {
-    headers: {
-      Accept: 'application/json',
-    },
-  }).then(checkStatus)
-    .then(parseJSON)
-    .then((response) => response);
-}
+// export function getUser(user_login) {
+//   return fetch(API + '/users/' + user_login, {
+//     headers: {
+//       Accept: 'application/json',
+//     },
+//   }).then(checkStatus)
+//     .then(parseJSON)
+//     .then((response) => response);
+// }
 
 function checkStatus(response) {
   if (response.status >= 200 && response.status < 300) {
