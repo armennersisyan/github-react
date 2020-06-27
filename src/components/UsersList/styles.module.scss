@@ -1,0 +1,51 @@
+@import "../../assets/styles/variables";
+
+.users-list {
+  display: flex;
+}
+
+.editable-user {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: #fff;
+  border: 1px solid #eee;
+  box-shadow: rgba(0, 0, 0, 0.05) 0 12px 15px 0;
+  border-radius: 10px;
+  padding: 20px;
+  margin: 15px 0;
+  word-break: break-all;
+  &__avatar {
+    width: 80px;
+    height: 80px;
+    border-radius: 50px;
+  }
+  &__login {
+    font-size: 16px;
+    color: $dark-gray;
+    margin-top: 15px;
+    margin-bottom: 5px;
+  }
+  &__type {
+    font-size: 13px;
+    color: $gray;
+    font-weight: 500;
+    margin: 0;
+  }
+  &__profile-btn {
+    font-size: 13px;
+    font-weight: 500;
+    color: $primary;
+    background: rgba(109, 217, 216, 0.1);
+    border-radius: 50px;
+    text-decoration: none;
+    padding: 5px 15px;
+    margin-top: 10px;
+    transition: 0.3s;
+    &:hover {
+      text-decoration: none;
+      background: $primary;
+      color: #fff;
+    }
+  }
+}
