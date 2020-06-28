@@ -1,11 +1,8 @@
 const API = process.env.REACT_APP_GITHUB_API;
 
 export function getUsers(success) {
-  return fetch(API + '/users', {
-    headers: {
-      Accept: 'application/json',
-    },
-  }).then(checkStatus)
+  return fetch(`${API}/users`)
+    .then(checkStatus)
     .then(parseJSON)
     .then(success)
     .catch(() => {
@@ -13,15 +10,19 @@ export function getUsers(success) {
     })
 }
 
-// export function getUser(user_login) {
-//   return fetch(API + '/users/' + user_login, {
-//     headers: {
-//       Accept: 'application/json',
-//     },
-//   }).then(checkStatus)
-//     .then(parseJSON)
-//     .then((response) => response);
-// }
+export function getUsersProfiles(users_logins) {
+  let requests = users_logins && users_logins.map(user_login => {
+    return fetch(`${API}/users/${user_login}`)
+  });
+  return Promise.all(requests)
+    .then(responses => {
+      return responses;
+    })
+    .then(responses => Promise.all(responses.map(r => parseJSON(r))))
+    .catch(() => {
+      console.log('error')
+    })
+}
 
 function checkStatus(response) {
   if (response.status >= 200 && response.status < 300) {

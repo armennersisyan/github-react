@@ -1,0 +1,43 @@
+@import "../../assets/styles/variables";
+
+.header {
+  position: fixed;
+  display: flex;
+  align-items: center;
+  top: 0;
+  width: 100%;
+  height: $header-height;
+  background: #fff;
+  box-shadow: rgba(0, 0, 0, 0.05) 0 12px 15px 0;
+  z-index: 1;
+  .users-search {
+    &:before {
+      position: absolute;
+      content: '\e610';
+      font-size: 15px;
+      font-family: 'themify';
+      color: $gray;
+      bottom: 7px;
+    }
+    input {
+      font-size: 14px;
+      height: 35px;
+      border: none;
+      border-bottom: 1px solid #eee;
+      outline: none;
+      transition: 0.3s;
+      padding-left: 22px;
+      max-width: 100%;
+      &:disabled {
+        opacity: 0.3;
+        background: transparent;
+      }
+    }
+  }
+  .view-btn {
+    background: transparent;
+    border: none;
+    outline: none;
+    color: $dark-gray;
+  }
+}

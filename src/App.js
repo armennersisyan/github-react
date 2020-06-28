@@ -1,11 +1,11 @@
 import React from 'react';
-import UsersList from './components/UsersList/UsersList';
+import UsersDashboard from './components/UsersDashboard/UsersDashboard';
 import './assets/styles/global.scss';
 
 function App() {
   return (
     <div className="App">
-      <UsersList />
+      <UsersDashboard />
     </div>
   );
 }
