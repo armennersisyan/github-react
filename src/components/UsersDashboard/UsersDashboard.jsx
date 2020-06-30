@@ -27,6 +27,7 @@ class UsersDashboard extends PureComponent {
       search: value
     })
     
+    if (!this.state.usersProfiles || !this.state.usersProfiles.length) return
     const usersSearched = this.state.usersProfiles.filter(user => {
       return user.login.toLocaleLowerCase().indexOf(value.toLocaleLowerCase()) !== -1
     });
@@ -52,6 +53,25 @@ class UsersDashboard extends PureComponent {
     this.setState({ usersSearched })
   }
   
+  handleUserDelete = (login) => {
+    const usersProfiles = [ ...this.state.usersProfiles ]
+    const usersSearched = [ ...this.state.usersSearched ]
+    this.setState({
+      usersProfiles: usersProfiles.filter(u => u.login !== login),
+      usersSearched: usersSearched.filter(u => u.login !== login)
+    })
+  }
+  
+  handleUserEdit = (newData, user_id) => {
+    const list = [ ...this.state.usersProfiles ]
+    let editableUserIndex = list.findIndex((user) => user.id === user_id)
+    list[editableUserIndex] = { ...list[editableUserIndex], ...newData }
+    this.setState({
+      usersProfiles: list,
+      usersSearched: list
+    })
+  }
+  
   render() {
     const { search, usersSearched, isLoading } = this.state
     return (
@@ -61,10 +81,15 @@ class UsersDashboard extends PureComponent {
           search={search}
           onChange={this.handleSearchChange}
         />
-        <UsersListTitle users={usersSearched} />
+        <UsersListTitle
+          isLoading={isLoading}
+          users={usersSearched}
+        />
         <UsersList
           isLoading={isLoading}
           users={usersSearched}
+          userDelete={this.handleUserDelete}
+          userEdit={this.handleUserEdit}
         />
       </>
     );

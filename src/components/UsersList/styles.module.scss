@@ -5,12 +5,45 @@
 }
 
 .editable-user {
+  position: relative;
   background: #fff;
   border: 1px solid #eee;
   box-shadow: rgba(0, 0, 0, 0.05) 0 12px 15px 0;
   border-radius: 10px;
   margin: 15px 0;
   word-break: break-all;
+  &__delete-btn {
+    position: absolute;
+    outline: none;
+    background: rgba(75, 75, 80, 0.1);
+    color: $dark-gray;
+    border: none;
+    border-radius: 50px;
+    top: 12.5px;
+    right: 12.5px;
+    transition: 0.3s;
+    &:hover {
+      color: #fff;
+      background: $dark-gray;
+    }
+    &:focus {
+      outline: none;
+    }
+  }
+  &__edit-btn {
+    position: absolute;
+    outline: none;
+    color: $dark-gray;
+    border: none;
+    border-radius: 50px;
+    top: 12.5px;
+    background: transparent;
+    right: 47px;
+    transition: 0.3s;
+    &:focus {
+      outline: none;
+    }
+  }
   &__inner {
     display: flex;
     flex-direction: column;
@@ -32,6 +65,11 @@
   &__login {
     font-size: 16px;
     color: $dark-gray;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 100%;
+    text-align: center;
     margin-top: 15px;
     margin-bottom: 5px;
     &--loader {
@@ -43,11 +81,31 @@
       margin-top: 15px;
       margin-bottom: 5px;
     }
+    &--input {
+      font-style: italic;
+      width: 100%;
+      max-width: 200px;
+      outline: none;
+      font-size: 16px;
+      color: $dark-gray;
+      font-weight: 500;
+      text-align: center;
+      border: none;
+      border-bottom: 1px solid #ccc;
+      height: 19px;
+      margin-top: 15px;
+      margin-bottom: 5px;
+    }
   }
   &__type {
     font-size: 13px;
     color: $gray;
     font-weight: 500;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 100%;
+    text-align: center;
     margin: 0;
     &--loader {
       @extend .loader;
@@ -55,7 +113,21 @@
       background: #eee;
       width: 40px;
       height: 11px;
-      margin:  4px 0;
+      margin: 4px 0;
+    }
+    &--input {
+      font-style: italic;
+      width: 100%;
+      max-width: 200px;
+      outline: none;
+      font-size: 13px;
+      color: $dark-gray;
+      font-weight: 500;
+      text-align: center;
+      border: none;
+      border-bottom: 1px solid #ccc;
+      height: 19px;
+      padding: 4px 0;
     }
   }
   &__profile-btn {

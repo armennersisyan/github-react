@@ -15,9 +15,6 @@ export function getUsersProfiles(users_logins) {
     return fetch(`${API}/users/${user_login}`)
   });
   return Promise.all(requests)
-    .then(responses => {
-      return responses;
-    })
     .then(responses => Promise.all(responses.map(r => parseJSON(r))))
     .catch(() => {
       console.log('error')

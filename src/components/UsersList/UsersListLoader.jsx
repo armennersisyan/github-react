@@ -14,8 +14,8 @@ class UsersListLoader extends PureComponent {
             <div className={styles['editable-user']}>
               <div className={styles['editable-user__inner']}>
                 <div className={styles['editable-user__avatar--loader']}/>
-                <h4 className={styles['editable-user__login--loader']} />
-                <p className={styles['editable-user__type--loader']} />
+                <div className={styles['editable-user__login--loader']} />
+                <div className={styles['editable-user__type--loader']} />
                 <div className={styles['editable-user__profile-btn--loader']} />
               </div>
               <div className={`${styles['editable-user__info']} row no-gutters`}>

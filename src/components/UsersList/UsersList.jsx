@@ -2,20 +2,25 @@ import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import EditableUser from './EditableUser';
 import UsersListLoader from './UsersListLoader';
-import styles from "./styles.module.scss";
 
 class UsersList extends PureComponent {
+  static propTypes = {
+    users: PropTypes.array.isRequired,
+    isLoading: PropTypes.bool,
+  };
+  
   render() {
-    const { users, isLoading } = this.props;
+    const { users, userEdit, userDelete, isLoading } = this.props;
     return (
       <div className="container">
         { !isLoading ? (
           <div className="row">
-            {users && users.map((user, index) => (
+            {users && users.map((user) => (
               <EditableUser
                 key={user.id}
                 user={user}
-                style={{transitionDelay: `${index * 70}ms`}}
+                userDelete={userDelete}
+                userEdit={userEdit}
               />
             ))}
           </div>
@@ -26,10 +31,5 @@ class UsersList extends PureComponent {
     );
   }
 }
-
-UsersList.propTypes = {
-  users: PropTypes.array,
-  isLoading: PropTypes.bool,
-};
 
 export default UsersList;
